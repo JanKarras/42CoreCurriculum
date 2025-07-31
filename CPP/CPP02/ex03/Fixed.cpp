@@ -1,36 +1,35 @@
-/* --- Fixed.cpp --- */
-
-/* ------------------------------------------
-author: undefined
-date: 11/7/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 12:59:31 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 12:59:50 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Fixed.h"
 
 Fixed::Fixed() : _fixedPointNumberValue(0) {
-    //std::cout << "Default constructor called\n";
 }
 
 Fixed::Fixed(const int nb) {
-	//std::cout << "Int constructor called\n";
 	this->_fixedPointNumberValue = nb << this->_fracBits;
 }
 
 Fixed::Fixed(const float nb) {
-	//std::cout << "Float constructor called\n";
 	this->_fixedPointNumberValue = static_cast<int>(roundf(nb * (1 << _fracBits)));
 }
 
 Fixed::~Fixed() {
-    //std::cout << "Destructor called\n";
 }
 
 Fixed::Fixed(const Fixed &other) : _fixedPointNumberValue(other._fixedPointNumberValue) {
-	//std::cout << "Copy constructor called\n";
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-	//std::cout << "Copy assignment operator called\n";
 	if (this != &other) {
 		this->_fixedPointNumberValue = other.getRawBits();
 	}
@@ -152,6 +151,6 @@ int Fixed::toInt( void ) const {
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &f) {
-	out << f.toFloat();  // Output the fixed-point value as a float
+	out << f.toFloat();
 	return out;
 }

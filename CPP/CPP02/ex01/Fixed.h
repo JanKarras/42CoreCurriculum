@@ -1,9 +1,14 @@
-/* --- Fixed.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/7/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 12:57:29 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 12:57:34 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FIXED_H
 #define FIXED_H
@@ -14,9 +19,9 @@ Date: 11/7/2024
 class Fixed {
 public:
 	Fixed();
-    Fixed(const int nb);
+	Fixed(const int nb);
 	Fixed(const float nb);
-    ~Fixed();
+	~Fixed();
 	Fixed(const Fixed &other);
 	Fixed &operator = (const Fixed &other);
 	int getRawBits( void ) const;

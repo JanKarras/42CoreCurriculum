@@ -1,22 +1,24 @@
-/* --- Point.cpp --- */
-
-/* ------------------------------------------
-author: undefined
-date: 11/8/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:01:04 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:01:11 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Point.h"
 
 Point::Point() : _x(0), _y(0) {
-    // Constructor
 }
 
 Point::~Point() {
-    // Destructor
 }
 
 Point::Point(const float x, const float y) : _x(x), _y(y) {
-    // Constructor
 }
 
 Point::Point(const Point &other) : _x(other._x), _y(other._y) {

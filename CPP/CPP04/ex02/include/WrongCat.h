@@ -1,9 +1,14 @@
-/* --- Cat.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/28/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:12:26 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:12:34 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef WRONGCAT_H
 #define WRONGCAT_H
@@ -12,17 +17,10 @@ Date: 11/28/2024
 
 class WrongCat  : public WrongAnimal {
 public:
-	//Constructors
 	WrongCat();
-	//Destructors
 	~WrongCat();
-	//Copy constructor
 	WrongCat(const WrongCat &other);
-	//copy assigment constructor
 	WrongCat&operator=(const WrongCat &other);
-	//public methods
-
-	//deriveded methods
 	void makeSound( void ) const;
 private:
 

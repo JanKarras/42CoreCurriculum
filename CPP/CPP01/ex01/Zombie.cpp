@@ -1,9 +1,14 @@
-/* --- Zombie.cpp --- */
-
-/* ------------------------------------------
-author: undefined
-date: 10/30/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 12:52:16 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 12:52:18 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Zombie.h"
 
@@ -12,14 +17,14 @@ Zombie::Zombie() {
 }
 
 Zombie::~Zombie() {
-    std::cout << name << " is destroyed.\n";
+	std::cout << name << " is destroyed.\n";
 }
 
 std::string Zombie::getName() {
-    return name;
+	return name;
 }
 void	Zombie::setName(std::string& value) {
-    name = value;
+	name = value;
 }
 
 void	Zombie::announce(void){

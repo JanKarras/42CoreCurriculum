@@ -1,9 +1,14 @@
-/* --- Animal.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/28/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongAnimal.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:09:29 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:09:38 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef WRONGANIMAL_H
 #define WRONGANIMAL_H
@@ -13,23 +18,16 @@ Date: 11/28/2024
 
 class WrongAnimal {
 public:
-	//Constructors
 	WrongAnimal();
 	WrongAnimal(const std::string type);
-	//Destructors
 	~WrongAnimal();
-	//Copy constructor
 	WrongAnimal(const WrongAnimal &other);
-	//copy assigment constructor
 	WrongAnimal&operator=(const WrongAnimal &other);
-	//public methods
 	std::string getType( void ) const;
-	//deriveded methods
 	void makeSound( void ) const;
 protected:
 	std::string _type;
 
 };
-
 
 #endif // WRONGANIMAL_H

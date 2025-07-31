@@ -1,9 +1,14 @@
-/* --- ClapTrap.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/13/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:01:44 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:01:48 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CLAPTRAP_H
 #define CLAPTRAP_H
@@ -16,8 +21,8 @@ Date: 11/13/2024
 #include <iostream>
 class ClapTrap {
 public:
-    ClapTrap();
-    ~ClapTrap();
+	ClapTrap();
+	~ClapTrap();
 	ClapTrap(const ClapTrap &copy);
 	ClapTrap &operator=(const ClapTrap &other);
 

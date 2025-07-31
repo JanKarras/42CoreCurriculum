@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:00:48 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:00:48 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.h"
 #include "Point.h"
 
@@ -8,25 +20,25 @@ int main( void ) {
 
 	std::cout << "Dreieck: A(0, 0), B(4, 0), C(2, 4)\n";
 	Point tests[] = {
-		Point(-1, 5),  // Oben links (außerhalb)
-		Point(5, 5),   // Oben rechts (außerhalb)
-		Point(2, -1),  // Unten (außerhalb)
-		Point(0, 0),   // Auf Ecke A
-		Point(4, 0),   // Auf Ecke B
-		Point(2, 4),   // Auf Ecke C
-		Point(2, 2),   // Innerhalb des Dreiecks
-		Point(1, 0),   // Auf Kante AB
-		Point(3, 2),   // Auf Kante BC
-		Point(1, 2),   // Auf Kante AC
-		Point(2, 0.1), // Innerhalb, nah an Kante AB
-		Point(3, 1.9), // Innerhalb, nah an Kante BC
-		Point(0.1, 0.1) // Innerhalb, nah an Kante AC
+		Point(-1, 5),
+		Point(5, 5),
+		Point(2, -1),
+		Point(0, 0),
+		Point(4, 0),
+		Point(2, 4),
+		Point(2, 2),
+		Point(1, 0),
+		Point(3, 2),
+		Point(1, 2),
+		Point(2, 0.1),
+		Point(3, 1.9),
+		Point(0.1, 0.1)
 	};
 	bool expected[] = {
-		false, false, false, // Tests außerhalb
-		true, true, true,    // Tests auf Ecken
-		true, true, true,    // Tests auf Kanten
-		true, true, true, true     // Tests innerhalb, nahe Kanten
+		false, false, false,
+		true, true, true,
+		true, true, true,
+		true, true, true, true
 	};
 	for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); ++i) {
 		std::cout << "Test " << i + 1 << ": Punkt ("

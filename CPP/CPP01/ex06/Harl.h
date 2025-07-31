@@ -1,9 +1,14 @@
-/* --- Harl.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/7/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 12:55:52 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 12:55:57 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef HARL_H
 #define HARL_H
@@ -13,8 +18,8 @@ Date: 11/7/2024
 
 class Harl {
 public:
-    Harl(std::string level);
-    ~Harl();
+	Harl(std::string level);
+	~Harl();
 	void	complain(std::string level);
 	int		getLevel( void );
 private:

@@ -1,5 +1,16 @@
-#include "Point.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bsp.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 12:59:23 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 12:59:25 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Point.h"
 
 bool	check_side(Point const p1, Point const p2, Point const point, bool check_below) {
 	const Fixed epsilon = Fixed(0.00390625f);

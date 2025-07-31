@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:07:47 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:07:50 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Dog.h"
 #include "../include/Cat.h"
 #include "../include/WrongAnimal.h"
@@ -20,7 +32,6 @@ int main() {
 	const WrongAnimal* wrongAnimal = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();
 	std::cout << wrongCat->getType() << " " << std::endl;
-	// Falscher Polymorphismus: Ruft die Methode der Basisklasse auf
 	wrongCat->makeSound();
 	wrongAnimal->makeSound();
 	delete wrongAnimal;

@@ -1,9 +1,14 @@
-/* --- Point.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/8/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Point.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:01:17 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:01:23 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef POINT_H
 #define POINT_H
@@ -12,9 +17,9 @@ Date: 11/8/2024
 
 class Point {
 public:
-    Point();
+	Point();
 	Point(const float x, const float y);
-    ~Point();
+	~Point();
 	Point(const Point &other);
 	Point &operator= (const Point &other);
 	Fixed getX( void ) const;

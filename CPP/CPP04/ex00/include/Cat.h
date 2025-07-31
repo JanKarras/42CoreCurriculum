@@ -1,9 +1,14 @@
-/* --- Cat.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/28/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:05:59 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:06:00 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CAT_H
 #define CAT_H
@@ -12,17 +17,10 @@ Date: 11/28/2024
 
 class Cat  : public Animal {
 public:
-	//Constructors
 	Cat();
-	//Destructors
 	~Cat();
-	//Copy constructor
 	Cat(const Cat &other);
-	//copy assigment constructor
 	Cat&operator=(const Cat &other);
-	//public methods
-
-	//deriveded methods
 	void makeSound( void ) const;
 private:
 

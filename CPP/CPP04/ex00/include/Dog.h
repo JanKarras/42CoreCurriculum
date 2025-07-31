@@ -1,9 +1,14 @@
-/* --- Dog.h --- */
-
-/* ------------------------------------------
-Author: undefined
-Date: 11/28/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:06:04 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:06:13 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef DOG_H
 #define DOG_H
@@ -12,17 +17,10 @@ Date: 11/28/2024
 
 class Dog : public Animal {
 public:
-	//Constructors
 	Dog();
-	//Destructors
 	~Dog();
-	//Copy constructor
 	Dog(const Dog &other);
-	//copy assigment constructor
 	Dog&operator=(const Dog &other);
-	//public methods
-
-	//deriveded methods
 	void makeSound( void ) const;
 
 private:

@@ -1,9 +1,14 @@
-/* --- Fixed.cpp --- */
-
-/* ------------------------------------------
-author: undefined
-date: 11/7/2024
------------------------------------------- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 12:56:28 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 12:56:32 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Fixed.h"
 
@@ -11,11 +16,11 @@ date: 11/7/2024
 #include <iostream>
 
 Fixed::Fixed() : _fixedPointNumberValue(0) {
-    std::cout << "Default constructor called\n";
+	std::cout << "Default constructor called\n";
 }
 
 Fixed::~Fixed() {
-    std::cout << "Destructor called\n";
+	std::cout << "Destructor called\n";
 }
 
 Fixed::Fixed(const Fixed &other) : _fixedPointNumberValue(other._fixedPointNumberValue) {

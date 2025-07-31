@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:27:04 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:27:07 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ARRAY_HPP
 
 #define ARRAY_HPP
@@ -28,7 +40,7 @@ template <class T>
 std::ostream &operator<<(std::ostream &stream, const Array<T> &other) {
 	stream << "MY  ARRAY ->[";
 	for (unsigned int i = 0; i < other.getSize(); i++) {
-		stream << other[i]; // Verwende den öffentlichen operator[]
+		stream << other[i]; 
 		if (i < other.getSize() - 1) {
 			stream << ", ";
 		}

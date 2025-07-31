@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:22:18 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:22:18 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/AForm.hpp"
 
 AForm::AForm(const std::string &name, const std::string &target, int signGrade, int executeGrade)

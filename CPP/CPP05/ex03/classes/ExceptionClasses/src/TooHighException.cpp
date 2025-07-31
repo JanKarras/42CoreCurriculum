@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   TooHighException.cpp                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:23:48 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:23:48 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/TooHighException.hpp"
 
 TooHighException::TooHighException( void ) : message("Grade is to high!") {

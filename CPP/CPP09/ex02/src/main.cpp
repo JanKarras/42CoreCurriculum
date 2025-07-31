@@ -1,16 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:29:41 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:29:51 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/PmergeMe.hpp"
 #include <iomanip>
 
 int getRandomNumber() {
-    // Initialisiere den Zufallszahlengenerator, falls noch nicht geschehen
-    static bool initialized = false;
-    if (!initialized) {
-        srand(time(0));  // Setzt den Seed für den Zufallszahlengenerator auf die aktuelle Zeit
-        initialized = true;
-    }
+	static bool initialized = false;
+	if (!initialized) {
+		srand(time(0));
+		initialized = true;
+	}
 
-    // Gibt eine zufällige Zahl zwischen 0 und 10 zurück
-    return rand() % 10;  // rand() gibt eine Zahl zwischen 0 und RAND_MAX zurück, mod 11 ergibt einen Bereich von 0 bis 10
+	return rand() % 10;
 }
 
 int stdtoint(std::string str) {

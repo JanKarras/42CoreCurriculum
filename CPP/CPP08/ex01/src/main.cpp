@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:27:58 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:28:03 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Span.hpp"
 
 int main( void ) {
@@ -12,7 +24,6 @@ int main( void ) {
 	span.addNumber(50);
 	span.addNumber(-1);
 	span.addNumber(50);
-	//std::cout << span << std::endl;
 	try {
 		span.addNumber(15);
 	} catch(const std::exception& e) {
@@ -24,7 +35,6 @@ int main( void ) {
 	for (size_t i = 0; i < 1000000; i++) {
 		bigSpan.addNumber(i);
 	}
-	//std::cout << bigSpan << std::endl;
 	try {
 		span.addNumber(15);
 	} catch(const std::exception& e) {
@@ -40,7 +50,6 @@ int main( void ) {
 			bigSpamRand.addNumber(newRand);
 		}
 	}
-	//std::cout << bigSpamRand << std::endl;
 	std::cout << "Longest Span: " << bigSpamRand.longesSpan() << std::endl;
 	std::cout << "Shortest Span: " << bigSpamRand.shortestSpan() << std::endl;
 

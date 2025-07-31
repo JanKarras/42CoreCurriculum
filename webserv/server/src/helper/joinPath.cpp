@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   joinPath.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:48 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:48 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 std::string joinPath(const std::string &base, const std::string &suffix) {
-    if (base.empty()) {
+	if (base.empty()) {
 		return suffix;
 	}
-    if (suffix.empty()) {
+	if (suffix.empty()) {
 		return base;
 	}
-    if (base[base.size() - 1] == '/' && suffix[0] == '/') {
-        return base + suffix.substr(1);
+	if (base[base.size() - 1] == '/' && suffix[0] == '/') {
+		return base + suffix.substr(1);
 	}
-    else if (base[base.size() - 1] != '/' && suffix[0] != '/') {
-        return base + "/" + suffix;
+	else if (base[base.size() - 1] != '/' && suffix[0] != '/') {
+		return base + "/" + suffix;
 	} else {
-        return base + suffix;
+		return base + suffix;
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handleRequest.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:34 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:34 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 
@@ -50,14 +62,11 @@ void handleRequest(int clientFd, ConfigData &configData) {
 				}
 			}
 
-			//Logger::debug("Matched location: %s", foundLocation->name.c_str());
-
 			if (req.method == GET) {
 				if (!foundLocation->get) {
 					Logger::error("Method GET not allowed for location %s", foundLocation->name.c_str());
 					handle405(res);
 				} else {
-					// Logger::debug("GET in location %s called", foundLocation->name.c_str());
 					routeRequestGET(req, res, Server, *foundLocation, clientFd);
 				}
 			} else if (req.method == POST) {
@@ -65,7 +74,6 @@ void handleRequest(int clientFd, ConfigData &configData) {
 					Logger::error("Method POST not allowed for location %s", foundLocation->name.c_str());
 					handle405(res);
 				} else {
-					// Logger::debug("POST in location %s called", foundLocation->name.c_str());
 					routeRequestPOST(req, res, Server, *foundLocation, clientFd);
 				}
 			} else if (req.method == DELETE) {
@@ -73,7 +81,6 @@ void handleRequest(int clientFd, ConfigData &configData) {
 					Logger::error("Method DELETE not allowed for location %s", foundLocation->name.c_str());
 					handle405(res);
 				} else {
-					// Logger::debug("DELETE in location %s called", foundLocation->name.c_str());
 					routeRequestDELETE(req, res, Server, *foundLocation);
 				}
 			} else {

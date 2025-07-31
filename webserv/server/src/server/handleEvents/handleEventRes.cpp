@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handleEventRes.cpp                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:57:31 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:57:31 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../include/webserv.hpp"
 
 void sendErrorHandle(int clientFd, ConfigData &data, ServerContext *serverContext) {
@@ -28,7 +40,6 @@ void sendHeader(HttpResponse &response, ServerContext *serverContext, ConfigData
 	}
 	headers.append("\r\n");
 
-	//redirectOutfile(headers, "./debugFiles/output_response.txt", headers.size(), headers.size());
 
 	ssize_t bytesSent = send(clientFd, headers.c_str(), headers.size(), 0);
 	if (bytesSent == -1) {
@@ -51,7 +62,6 @@ void sendBodyCunkend(HttpResponse &response, ServerContext *serverContext, Confi
 		sendString.append(response.body.substr(0, newBodySize));
 		sendString.append("\r\n");
 		response.body.erase(0, newBodySize);
-		//redirectOutfile(sendString, "./debugFiles/output_response.txt", 100, sendString.size());
 		ssize_t bytesSent = send(clientFd, sendString.c_str(), sendString.size(), 0);
 		if (bytesSent == -1) {
 			Logger::error("Error sending body to clientFd: %d", clientFd);

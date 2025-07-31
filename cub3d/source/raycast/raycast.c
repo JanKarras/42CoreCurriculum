@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatthes <rmatthes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:18:10 by jkarras           #+#    #+#             */
-/*   Updated: 2024/10/28 13:18:20 by rmatthes         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:44:26 by jkarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// Funktion zur Initialisierung des DDA-Verfahrens
-// (Digital Differential Analyzer)
-// if/else Bestimme die Richtung und Startdistanz
-// entlang der XY-Achse
-// Wenn die Richtung des Strahls nach links zeigt
-// Strahl Schrittweise nach links bewegen
-// dann, berechne die Entfernung von der Spielerposition
-// zur ersten X-seitenlinie
 void	set_dda(t_ray *ray, t_player *player)
 {
 	if (ray->dir_x < 0)
@@ -44,15 +36,6 @@ void	set_dda(t_ray *ray, t_player *player)
 	}
 }
 
-// Funktion zur Durchfuerung des DDA-Alogritmus, um Wandkolisionen zu finden
-// hit = 0; Trefferindikator, = 0 keine Wandgetroffen
-// Pruefung in welche Richtung der Strahl weitergehen soll
-// Falls die X-Distanz groesser ist gehe in diese richtung
-// andern falls in Y-Richtung
-// Erhoehe die Distanz zur naechsten Seitenlinie
-// Aktualliesiere die Position auf dem Raster
-// ray->side = 0 steht fuer Kollision auf einer vertikalen Wand
-// ray->side = 1 steht fuer Kollision auf einer horizontalen Wand
 void	perform_dda(t_data *data, t_ray *ray)
 {
 	int	hit;

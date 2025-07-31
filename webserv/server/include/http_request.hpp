@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   http_request.hpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:05 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:05 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -12,7 +24,7 @@ enum HttpMethod
 	HEAD,
 	POST,
 	PUT,
-    DELETE,
+	DELETE,
 	CONNECT,
 	OPTIONS,
 	TRACE,

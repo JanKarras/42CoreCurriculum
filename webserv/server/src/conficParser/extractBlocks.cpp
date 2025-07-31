@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   extractBlocks.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:21 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:21 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 std::vector<std::string> extractServerBlocks(std::string &file) {
@@ -80,7 +92,7 @@ std::vector<std::string> extractLocationBlocks(std::string &serverBlock) {
 			}
 		}
 	}
-	
+
 	if (insideLocation && !currentBlock.empty()) {
 		locationBlocks.push_back(currentBlock);
 	}

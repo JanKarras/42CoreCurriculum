@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   makeExecutable.cpp                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:50 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:50 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 bool setsetExecutable(std::string &filePath) {
@@ -9,16 +21,12 @@ bool setsetExecutable(std::string &filePath) {
 	}
 
 	if (pid == 0) {
-		// Kindprozess führt chmod aus
 		char *argv[] = { (char *)"/bin/chmod", (char *)"755", (char *)filePath.c_str(), NULL };
 		execve(argv[0], argv, NULL);
-
-		// Falls execve fehlschlägt, beenden wir den Kindprozess sofort
 		Logger::error("execve failed for chmod");
 		_exit(1);
 	}
 
-	// Elternprozess wartet auf Kindprozess
 	int status;
 	if (waitpid(pid, &status, 0) == -1) {
 		Logger::error("waitpid failed");
@@ -26,7 +34,6 @@ bool setsetExecutable(std::string &filePath) {
 	}
 
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
-		//Logger::info("File set to executable: %s", filePath.c_str());
 		return true;
 	} else {
 		Logger::error("chmod failed with exit code %d", WEXITSTATUS(status));

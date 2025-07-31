@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   killChildTime.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:14 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:14 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 void checkCgiTimeouts(ConfigData &data) {
@@ -29,7 +41,6 @@ void checkCgiTimeouts(ConfigData &data) {
 					kill(childPid, SIGKILL);
 					ctx.pids.erase(toErase);
 					handle504(respIt->second);
-					//Logger::info("Child von clientFd: %i wurde wegen zeituberschreitung beendet", clientFd);
 					continue;
 				}
 			}

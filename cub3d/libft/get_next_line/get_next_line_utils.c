@@ -6,7 +6,7 @@
 /*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 11:35:37 by rmatthes          #+#    #+#             */
-/*   Updated: 2024/10/04 15:06:05 by jkarras          ###   ########.fr       */
+/*   Updated: 2025/07/31 13:44:40 by jkarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strcpy_endl(char *dst, char *src)
 	int	i;
 
 	i = 0;
-	while (src[i] != '\0') //&& src[i] != '\n'
+	while (src[i] != '\0') 
 	{
 		dst[i] = src[i];
 		i++;

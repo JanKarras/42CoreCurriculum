@@ -6,7 +6,7 @@
 /*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:34:22 by jkarras           #+#    #+#             */
-/*   Updated: 2024/03/05 17:19:35 by jkarras          ###   ########.fr       */
+/*   Updated: 2025/07/31 13:49:12 by jkarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,3 @@ int	main(int argc, char **argv)
 	free_argv(argv);
 	return (0);
 }
-
-//valgrind --leak-check=full ./push_swap "4 2 1"
-//lldb ./checker '1 2 3'
-//r

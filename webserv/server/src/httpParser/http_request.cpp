@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   http_request.cpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:57:02 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:57:02 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 static const std::string validPathChars = "-_.~!$&'()*+,;=";
@@ -50,7 +62,7 @@ static int resolvePath(ConfigData &configData, HttpRequest &req, bool resolvePat
 {
 	if (!resolvePath)
 		return SUCCESS;
-	std::stack<std::string> dirs;  // Stack to hold directory components
+	std::stack<std::string> dirs;
 	std::stringstream stream(req.path);
 	std::string token;
 
@@ -72,7 +84,6 @@ static int resolvePath(ConfigData &configData, HttpRequest &req, bool resolvePat
 			dirs.push(token);
 	}
 
-	// Reconstruct the resolved path
 	std::string resolvedPath = "/";
 	std::stack<std::string> tempStack;
 	while (!dirs.empty())
@@ -80,13 +91,11 @@ static int resolvePath(ConfigData &configData, HttpRequest &req, bool resolvePat
 		tempStack.push(dirs.top());
 		dirs.pop();
 	}
-	// Concatenate each directory to form the final resolved path
 	while (!tempStack.empty())
 	{
 		resolvedPath += tempStack.top() + "/";
 		tempStack.pop();
 	}
-	// If the path isn't just the root, remove the last trailing slash
 	if (resolvedPath.length() > 1)
 		resolvedPath.erase(resolvedPath.length() - 1);
 	req.path = resolvedPath;
@@ -790,30 +799,24 @@ void parseHttpRequest(ConfigData &configData, int client_fd, std::string &data)
 	HttpRequest &req = configData.requests[client_fd];
 
 	req.buffer.append(data);
-	//Logger::debug("Data appended to buffer for client %i", client_fd);
 
 	if (req.state == REQUEST_LINE) {
 		if (parseHttpRequestLine(configData, req) == FAILURE) return;
-		//Logger::debug("Request line parsed successfully for client %i", client_fd);
 	}
 
 	if (req.state == HEADERS) {
 		if (parseHttpHeaderLine(configData, req) == FAILURE) return;
-		//Logger::debug("Headers parsed successfully for client %i", client_fd);
 	}
 
 	if (req.state == NO_BODY) {
 		if (parseHttpNoBody(configData, req) == FAILURE) return;
-		//Logger::debug("No-body request handled successfully for client %i", client_fd);
 	}
 
 	if (req.state == BODY_CHUNKED) {
 		if (parseHttpBodyChunked(configData, req) == FAILURE) return;
-		//Logger::debug("Chunked body parsed successfully for client %i", client_fd);
 	}
 
 	if (req.state == BODY) {
 		if (parseHttpBody(configData, req) == FAILURE) return;
-		//Logger::debug("Body parsed successfully for client %i", client_fd);
 	}
 }

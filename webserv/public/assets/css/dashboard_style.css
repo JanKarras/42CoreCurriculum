@@ -1,44 +1,44 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	background-color: #333;
+	color: white;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 header img {
-    height: 100px;
+	height: 100px;
 }
 
 .mYbtn {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
+	background-color: #007BFF;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 .mYbtn:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+	background-color: #333;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 footer a{
@@ -113,31 +113,31 @@ footer a{
 
 /* Terminal Container */
 .terminal {
-    width: 100%;               /* Breite des Containers */
-    height: 400px;             /* Feste Höhe für das Terminal */
-    overflow-y: auto;          /* Scrollen in vertikaler Richtung */
-    background-color: black;  /* Hintergrundfarbe */
-    color: white;              /* Textfarbe */
-    font-family: 'Courier New', Courier, monospace; /* Monospace Schriftart */
-    padding: 10px;             /* Innenabstand */
-    box-sizing: border-box;    /* Sicherstellen, dass Padding in der Größe berücksichtigt wird */
-    white-space: pre-wrap;     /* Erlaubt Zeilenumbrüche und langen Text ohne Abschneiden */
-    font-size: 14px;           /* Schriftgröße */
-    border: 2px solid #333;    /* Border, um es wie ein Terminal aussehen zu lassen */
-    border-radius: 5px;        /* Abgerundete Ecken */
-    margin-top: 10px;          /* Abstand nach oben */
+	width: 100%;               /* Breite des Containers */
+	height: 400px;             /* Feste Höhe für das Terminal */
+	overflow-y: auto;          /* Scrollen in vertikaler Richtung */
+	background-color: black;  /* Hintergrundfarbe */
+	color: white;              /* Textfarbe */
+	font-family: 'Courier New', Courier, monospace; /* Monospace Schriftart */
+	padding: 10px;             /* Innenabstand */
+	box-sizing: border-box;    /* Sicherstellen, dass Padding in der Größe berücksichtigt wird */
+	white-space: pre-wrap;     /* Erlaubt Zeilenumbrüche und langen Text ohne Abschneiden */
+	font-size: 14px;           /* Schriftgröße */
+	border: 2px solid #333;    /* Border, um es wie ein Terminal aussehen zu lassen */
+	border-radius: 5px;        /* Abgerundete Ecken */
+	margin-top: 10px;          /* Abstand nach oben */
 }
 
 /* Styling für das Scrolling */
 .terminal::-webkit-scrollbar {
-    width: 8px; /* Breite des Scrollbalkens */
+	width: 8px; /* Breite des Scrollbalkens */
 }
 
 .terminal::-webkit-scrollbar-thumb {
-    background-color: #888; /* Scrollbalken-Farbe */
-    border-radius: 4px;
+	background-color: #888; /* Scrollbalken-Farbe */
+	border-radius: 4px;
 }
 
 .terminal::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* Hover-Farbe des Scrollbalkens */
+	background-color: #555; /* Hover-Farbe des Scrollbalkens */
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmatthes <rmatthes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:28:38 by jkarras           #+#    #+#             */
-/*   Updated: 2024/10/28 13:28:54 by rmatthes         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:44:19 by jkarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,6 @@ void	init_raycasting_info(int i, t_ray *ray, t_player *player)
 	ray->deltadist_y = fabs(1 / ray->dir_y);
 }
 
-// Berechne die Hoehe und Position der Wandlinie
-// Berechne die Entfernung zur Wand abhaenig von der getroffenen Seite
-// Wenn eine vertikale Wand getroffen wurde, basiert die Distanz auf X
-// bei einer horizontalen Wand auf Y Richtung
-// Berechne die Hoehe der Linie, die die Wand darstellen soll
-// Berechne die Anfangsposition der Linie im Fenster
-// Falls die Startposition ueber dem Fensteranfang liegt,
-// setze sie auf den oberen Rand
-// Berechne die Endposition der Linie im Fenster
-// Falls die Startposition unterhalb dem Fensteranfang liebt,
-// setze sie auf den unteren Rand
-// Berechne den exakten X-Kollisionspunkt an der Wand, um auf der Y-Position
-// des Spielers
-// Falls es eine vertikale Wand ist,
-// basiert der Kollisionspunkt auf der Y-Position
-// Falls es eine horizontale Wand ist,
-// basiert der Kollisionspunkt auf der X-Position
-// Als letztes Entferne die Ganzzahlanteile des Kollisionspunktes,
-// um die exakte Texturenkoordinate zu erhalten
 void	calculate_line_height(t_ray *ray, t_data *data, t_player *player)
 {
 	if (ray->side == 0)

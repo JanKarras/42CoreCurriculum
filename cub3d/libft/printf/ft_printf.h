@@ -6,7 +6,7 @@
 /*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:21:33 by jkarras           #+#    #+#             */
-/*   Updated: 2023/11/24 16:15:52 by jkarras          ###   ########.fr       */
+/*   Updated: 2025/07/31 13:45:03 by jkarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <string.h>
 # include <stdarg.h>
 
-//printf fucntions
 int		ft_printf(const char *s, ...);
 void	ft_putstr_p(char *s, size_t *counter);
 void	ft_putchar_p(char c, size_t *counter);

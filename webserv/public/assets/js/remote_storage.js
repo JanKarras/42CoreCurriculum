@@ -93,176 +93,176 @@ async function uploadFileBackend(file) {
 
 async function testTmpKek() {
 	try {
-        const response = await fetch(`/test.bla`, {
-            method: 'POST',
-            body: "Ich Poste die test File"
-        });
+		const response = await fetch(`/test.bla`, {
+			method: 'POST',
+			body: "Ich Poste die test File"
+		});
 
-        if (response.ok) {
-            console.log("Ich Poste die test File successful");
-            return true;
-        } else {
+		if (response.ok) {
+			console.log("Ich Poste die test File successful");
+			return true;
+		} else {
 			console.log(response);
-            return false;
-        }
+			return false;
+		}
 	} catch (error) {
 		return false;
 	}
 }
 
 async function uploadFile(file, email) {
-    try {
-        const response = await fetch(`/uploadFile?email=${email}&fileName=${file.name}`, {
-            method: 'POST',
-            body: file
-        });
+	try {
+		const response = await fetch(`/uploadFile?email=${email}&fileName=${file.name}`, {
+			method: 'POST',
+			body: file
+		});
 
-        if (response.ok) {
-            console.log("File upload successful");
-            return true;
-        } else {
+		if (response.ok) {
+			console.log("File upload successful");
+			return true;
+		} else {
 			console.log(response);
-            return false;
-        }
+			return false;
+		}
 	} catch (error) {
 		return false;
 	}
 }
 
 async function getFile(fileName, email) {
-    try {
-        const response = await fetch(`/getFile?email=${email}&fileName=${fileName}`, {
-            method: 'GET'
-        });
+	try {
+		const response = await fetch(`/getFile?email=${email}&fileName=${fileName}`, {
+			method: 'GET'
+		});
 
-        if (response.ok) {
-            const contentType = response.headers.get('Content-Type');
+		if (response.ok) {
+			const contentType = response.headers.get('Content-Type');
 
-            if (contentType && contentType.startsWith('image')) {
-                const imageBlob = await response.blob();
-                return imageBlob;
-            }
-            else if (contentType && contentType.startsWith('application')) {
-                const textContent = await response.text();
-                return textContent;
-            }
-            else {
-                console.log('Unsupported file type:', contentType);
-                return false;
-            }
-        } else {
-            console.log(`Error fetching file: ${response.status}`);
-            return false;
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        return false;
-    }
+			if (contentType && contentType.startsWith('image')) {
+				const imageBlob = await response.blob();
+				return imageBlob;
+			}
+			else if (contentType && contentType.startsWith('application')) {
+				const textContent = await response.text();
+				return textContent;
+			}
+			else {
+				console.log('Unsupported file type:', contentType);
+				return false;
+			}
+		} else {
+			console.log(`Error fetching file: ${response.status}`);
+			return false;
+		}
+	} catch (error) {
+		console.error('Error:', error);
+		return false;
+	}
 }
 
 
 
 async function getFileNames(email) {
-    try {
-        const response = await fetch(`/getFileNames?email=${email}`, {
-            method: 'GET'
-        });
+	try {
+		const response = await fetch(`/getFileNames?email=${email}`, {
+			method: 'GET'
+		});
 
-        if (response.ok) {
-            const fileList = await response.text();
+		if (response.ok) {
+			const fileList = await response.text();
 
 			const filesArray = fileList ? fileList.split(";") : [];
 
-            return filesArray;
-        } else {
+			return filesArray;
+		} else {
 			console.log(response);
-            return [];
-        }
+			return [];
+		}
 	} catch (error) {
 		return [];
 	}
 }
 
 async function deleteFileRoute(fileName, email) {
-    try {
-        const response = await fetch(`/deleteFile?email=${email}&fileName=${fileName}`, {
-            method: 'DELETE'
-        });
+	try {
+		const response = await fetch(`/deleteFile?email=${email}&fileName=${fileName}`, {
+			method: 'DELETE'
+		});
 
-        if (response.ok) {
+		if (response.ok) {
 			return true;
-        } else {
-            console.log(`Error fetching file: ${response.status}`);
+		} else {
+			console.log(`Error fetching file: ${response.status}`);
 
-        }
-    } catch (error) {
-        console.error('Error:', error);
+		}
+	} catch (error) {
+		console.error('Error:', error);
 
-    }
+	}
 }
 
 
 async function checkRootPassword(password) {
-    try {
-        const response = await fetch(`/checkRootPassword?password=${password}`, {
-            method: 'GET'
-        });
+	try {
+		const response = await fetch(`/checkRootPassword?password=${password}`, {
+			method: 'GET'
+		});
 
-        if (response.ok) {
+		if (response.ok) {
 			return true;
-        } else {
-            console.log(`Error fetching file: ${response.status}`);
+		} else {
+			console.log(`Error fetching file: ${response.status}`);
 			return false;
-        }
-    } catch (error) {
-        console.error('Error:', error);
+		}
+	} catch (error) {
+		console.error('Error:', error);
 
-    }
+	}
 }
 
 async function executeSkript(fileName, email, password) {
-    try {
-        const response = await fetch(`/executeSkript/test.sh?fileName=${fileName}&email=${email}&password=${password}`, {
-            method: 'GET'
-        });
+	try {
+		const response = await fetch(`/executeSkript/test.sh?fileName=${fileName}&email=${email}&password=${password}`, {
+			method: 'GET'
+		});
 
-        if (!response.body) {
-            console.error("No response body received.");
-            return false;
-        }
+		if (!response.body) {
+			console.error("No response body received.");
+			return false;
+		}
 
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        const terminalContainer = document.getElementById("fileContent");
-        terminalContainer.innerHTML += "<div id='terminal' class='terminal'></div>";
-        const terminal = document.getElementById("terminal");
+		const reader = response.body.getReader();
+		const decoder = new TextDecoder();
+		const terminalContainer = document.getElementById("fileContent");
+		terminalContainer.innerHTML += "<div id='terminal' class='terminal'></div>";
+		const terminal = document.getElementById("terminal");
 
-        // Scrollen zum neuesten Inhalt
-        terminal.scrollTop = terminal.scrollHeight;
+		// Scrollen zum neuesten Inhalt
+		terminal.scrollTop = terminal.scrollHeight;
 
-        while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
+		while (true) {
+			const { done, value } = await reader.read();
+			if (done) break;
 
-            const chunk = decoder.decode(value, { stream: true });
+			const chunk = decoder.decode(value, { stream: true });
 
-            // Konvertiere Zeilenumbrüche zu <br> oder einer neuen <div>
-            const formattedChunk = chunk.replace(/\n/g, '<br>'); // Zeilenumbrüche zu <br> machen
+			// Konvertiere Zeilenumbrüche zu <br> oder einer neuen <div>
+			const formattedChunk = chunk.replace(/\n/g, '<br>'); // Zeilenumbrüche zu <br> machen
 
-            // Füge den formatierten Text dem Terminal hinzu
-            terminal.innerHTML += formattedChunk;
+			// Füge den formatierten Text dem Terminal hinzu
+			terminal.innerHTML += formattedChunk;
 
-            // Sicherstellen, dass das Terminal immer nach unten scrollt
-            terminal.scrollTop = terminal.scrollHeight;
-        }
+			// Sicherstellen, dass das Terminal immer nach unten scrollt
+			terminal.scrollTop = terminal.scrollHeight;
+		}
 
 		terminal.innerHTML += "Execution finished."
-        return true;
+		return true;
 
-    } catch (error) {
-        console.error('Error:', error);
-        return false;
-    }
+	} catch (error) {
+		console.error('Error:', error);
+		return false;
+	}
 }
 
 

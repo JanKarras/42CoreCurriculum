@@ -13,34 +13,32 @@
 		<img src="./assets/img/42Wolfsburg_Logo_ver_pos_black.pdf.jpg" alt="Logo">
 	</header>
 
-<!-- Login Popup -->
 	<div class="popup" id="loginPopup" onclick="closePopup(event, 'loginPopup')">
-	    <div class="popup-content" onclick="event.stopPropagation()">
-	        <h2>Login</h2>
-	        <div id="error-message" style="color: red; display: none;"></div> <!-- Fehleranzeige -->
-	        <form>
-	            <input type="email" id="email" placeholder="E-Mail" required><br><br>
-	            <input type="password" id="password" placeholder="Passwort" required><br><br>
-	            <button onclick="login(event)" type="submit" class="btn">Einloggen</button>
-	            <button type="button" class="btn" onclick="togglePopup('loginPopup')">Schließen</button>
-	        </form>
-	    </div>
+		<div class="popup-content" onclick="event.stopPropagation()">
+			<h2>Login</h2>
+			<div id="error-message" style="color: red; display: none;"></div>
+			<form>
+				<input type="email" id="email" placeholder="E-Mail" required><br><br>
+				<input type="password" id="password" placeholder="Passwort" required><br><br>
+				<button onclick="login(event)" type="submit" class="btn">Einloggen</button>
+				<button type="button" class="btn" onclick="togglePopup('loginPopup')">Schließen</button>
+			</form>
+		</div>
 	</div>
 
 
-	<!-- Register Popup -->
 	<div class="popup" id="registerPopup" onclick="closePopup(event, 'registerPopup')">
-	    <div class="popup-content" onclick="event.stopPropagation()">
-	        <h2>Registrierung</h2>
-			<div id="error-messageReq" style="color: red; display: none;"></div> <!-- Fehleranzeige -->
-	        <form>
-	            <input id="emailReq" type="email" placeholder="E-Mail" required><br><br>
-	            <input id="passwordReq" type="password" placeholder="Password" required><br><br>
-	            <input id="confirmPasswordReq" type="password" placeholder="Confirm Password" required><br><br>
-	            <button onclick="register(event)" type="submit" class="btn">Registrieren</button>
-	            <button type="button" class="btn" onclick="togglePopup('registerPopup')">Schließen</button>
-	        </form>
-	    </div>
+		<div class="popup-content" onclick="event.stopPropagation()">
+			<h2>Registrierung</h2>
+			<div id="error-messageReq" style="color: red; display: none;"></div> 
+			<form>
+				<input id="emailReq" type="email" placeholder="E-Mail" required><br><br>
+				<input id="passwordReq" type="password" placeholder="Password" required><br><br>
+				<input id="confirmPasswordReq" type="password" placeholder="Confirm Password" required><br><br>
+				<button onclick="register(event)" type="submit" class="btn">Registrieren</button>
+				<button type="button" class="btn" onclick="togglePopup('registerPopup')">Schließen</button>
+			</form>
+		</div>
 	</div>
 
 	<main>
@@ -67,9 +65,9 @@
 			<p>Webserv is one of the final projects of 42 School. The task is to program a server in C++. The server should support different routes and pages. The available HTTP methods are GET, POST, and DELETE. To test these methods, users can create an account or log in if they already have one.</p>
 		</section>
 
-    	<div style="text-align: center; padding: 20px;">
-        	<a class="dashboardLink" href="dashboard.html">Dashboard</a>
-    	</div>
+		<div style="text-align: center; padding: 20px;">
+			<a class="dashboardLink" href="dashboard.html">Dashboard</a>
+		</div>
 	</main>
 
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handleEventReq.cpp                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:57:29 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:57:29 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../include/webserv.hpp"
 
 bool handleEventReq(ConfigData &configData, int i) {
@@ -5,8 +17,6 @@ bool handleEventReq(ConfigData &configData, int i) {
 	std::string data;
 
 	int bytesRead = recv(configData.events[i].data.fd, buffer, sizeof(buffer), 0);
-
-	//redirectOutfile(buffer, "./debugFiles/output.txt", 1000, bytesRead);
 
 	if (bytesRead == -1) {
 		return (false);

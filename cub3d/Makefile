@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmatthes <rmatthes@student.42.fr>          +#+  +:+       +#+         #
+#    By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 14:02:37 by jkarras           #+#    #+#              #
-#    Updated: 2024/10/24 16:59:35 by rmatthes         ###   ########.fr        #
+#    Updated: 2025/07/31 13:42:50 by jkarras          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = cub3d
-CFLAGS      = #-Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror
 CC          = cc
 SRC_DIR     = source
 OBJ_DIR     = obj
@@ -23,7 +23,6 @@ MLX			= $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS	= -lX11 -lXext
 MATH_LIB	= -lm
 
-# Separate Quellverzeichnis-Variablen
 SRC_MAIN_DIR    = $(SRC_DIR)/main
 SRC_INIT_DIR	= $(SRC_DIR)/init_data
 SRC_PARSE_DIR	= $(SRC_DIR)/parse
@@ -34,9 +33,6 @@ SRC_RENDER_DIR	= $(SRC_DIR)/render
 SRC_RAYCAST_DIR	= $(SRC_DIR)/raycast
 SRC_MOVEMENT_DIR	= $(SRC_DIR)/movement
 
-
-
-# Alle Quellverzeichnisse zusammenfassen
 SRC =   $(SRC_MAIN_DIR)/main.c \
 		$(SRC_INIT_DIR)/init_data.c \
 		$(SRC_INIT_DIR)/init_mlx.c \
@@ -63,26 +59,19 @@ SRC =   $(SRC_MAIN_DIR)/main.c \
 		$(SRC_MOVEMENT_DIR)/movement.c \
 		$(SRC_MOVEMENT_DIR)/movement_utils.c \
 
-
-
-# Objektdateien im obj-Verzeichnis, ohne Unterverzeichnisse
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
-# Default target
 all: $(NAME)
 
-# Regel zur Erstellung des Binaries
 $(NAME): $(LIBFT) $(MLX) $(OBJ_DIR) $(OBJ)
 	@echo "Compiling minishell..."
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) $(MATH_LIB) -o $@
 	@echo "Done!"
 
-# Regel zum Kompilieren der Objektdateien
 $(OBJ_DIR)/%.o: $(SRC_DIR)/**/%.c | $(OBJ_DIR)
 	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# Regel zur Erstellung des LIBFT
 $(LIBFT):
 	@echo "Compiling libft..."
 	@make -C $(LIBFT_DIR)
@@ -91,25 +80,21 @@ $(MLX):
 	@echo "Compiling mlx..."
 	@make -C $(MLX_DIR)
 
-# Regel zur Erstellung des Objektverzeichnisses
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-# Regel zum Aufräumen
 clean:
 	@echo "Cleaning..."
 	@make clean -C $(LIBFT_DIR)
 	@make clean -C $(MLX_DIR)
 	@$(RM) $(OBJ_DIR)
 
-# Regel zum vollständigen Aufräumen
 fclean: clean
 	@echo "Fcleaning..."
 	@$(RM) $(NAME)
 	@make fclean -C $(LIBFT_DIR)
 	@make clean -C $(MLX_DIR)
 
-# Regel zum Neu-Erstellen
 re: fclean
 	@make all
 

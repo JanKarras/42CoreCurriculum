@@ -1,13 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handleErrorRequest.cpp                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:32 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:32 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 void handleErrorRequest(int clientFd, ConfigData &data, HttpRequest &req) {
 
 	ServerContext *serverContext = &data.servers[0].serverContex;
 
-	//Logger::info("Error request detected for clientFd %i, error code %i", clientFd, req.exitStatus);
-
 	HttpResponse &res = serverContext->responses[clientFd];
-
 
 	res.statusCode = req.exitStatus;
 

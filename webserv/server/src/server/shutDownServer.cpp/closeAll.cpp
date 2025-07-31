@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   closeAll.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:57:40 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:57:40 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../include/webserv.hpp"
 
 void closeHttpRequests(std::map<int, HttpRequest *> &requests, int epollFd) {
@@ -43,7 +55,6 @@ void killChildProcesses(std::map<int, pid_t> &pids) {
 		if (kill(childPid, SIGTERM) == -1) {
 			Logger::error("Failed to send SIGTERM to child PID %d", childPid);
 		} else {
-			//Logger::info("Sent SIGTERM to child PID %d", childPid);
 		}
 		int status = 0;
 		waitpid(childPid, &status, 0);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:57:09 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:57:09 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 std::string escapeHtml(const std::string& input) {
@@ -83,17 +95,17 @@ void handleGet(HttpRequest &req, HttpResponse &res, server &server, location &lo
 	(void) clientFd;
 	std::string filePath = req.path.substr(loc.name.size()); // z.B. "/ls.sh"
 	if (!filePath.empty() && filePath[0] == '/') {
-	    filePath.erase(0, 1);
+		filePath.erase(0, 1);
 	}
 
 	if (filePath.empty()) {
-	    if (loc.index.empty()) {
-	        filePath = server.root + server.index;
-	    } else {
-	        filePath = server.root + loc.index;
-	    }
+		if (loc.index.empty()) {
+			filePath = server.root + server.index;
+		} else {
+			filePath = server.root + loc.index;
+		}
 	} else {
-	    filePath = server.root + filePath;
+		filePath = server.root + filePath;
 	}
 
 	SearchResult result;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cgi.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:12 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:12 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 std::string httpMethodToString(HttpMethod method) {
@@ -20,12 +32,9 @@ std::vector<std::string> getEnvp(HttpRequest &req, std::string filePath) {
 		env.push_back("SERVER_PORT=" + toStringInt(req.srv->port));
 	}
 
-	//env.push_back("SCRIPT_NAME=" + req.path);
 	env.push_back("REMOTE_ADDR=127.0.0.1");
 	env.push_back("PATH_INFO=/");
-	//env.push_back("PATH_TRANSLATED=" + filePath);
 	if (!req.queryString.empty())
-		//env.push_back("QUERY_STRING=" + req.queryString);
 	if (req.method == POST) {
 		if (req.headers.find("content-type") != req.headers.end()) {
 			env.push_back("CONTENT_TYPE=" + req.headers["content-type"]);
@@ -114,7 +123,6 @@ void exeSkript(HttpRequest &req, HttpResponse &res, ServerContext &serverContext
 
 	serverContext.cgifds[clientFd] = inputPipe[1];
 	serverContext.fds[clientFd] = outputPipe[0];
-	//Logger::debug("Fd inputPipe %i", serverContext.cgifds[clientFd]);
 	serverContext.pids[clientFd] = pid;
 	setNonBlocking(serverContext.fds[clientFd]);
 	setNonBlocking(serverContext.cgifds[clientFd]);
@@ -126,6 +134,5 @@ void exeSkript(HttpRequest &req, HttpResponse &res, ServerContext &serverContext
 }
 
 void executeSkript(HttpRequest &req, HttpResponse &res, server &server, int clientFd, file f) {
-	//Logger::debug("executer script f.path: %s", f.path.c_str());
 	exeSkript(req, res, server.serverContex, clientFd, f.path);
 }

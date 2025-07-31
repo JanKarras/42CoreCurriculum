@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handleRequestInit.cpp                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:56:37 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:56:37 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 server &getServer(int clientFd, ConfigData &configData) {
@@ -5,7 +17,6 @@ server &getServer(int clientFd, ConfigData &configData) {
 		server &server = configData.servers[i];
 		ServerContext &serverContext = server.serverContex;
 		if (serverContext.requests.find(clientFd) != serverContext.requests.end()) {
-			//Logger::info("Request was found for server: %s", server.server_name.c_str());
 			return (server);
 		}
 	}
@@ -30,7 +41,6 @@ void normelaizePaths(HttpRequest &req, server &Server) {
 		location &loc = Server.locations[i];
 		if (!loc.regularLocation && loc.name.length() > 1 && loc.name[loc.name.length() - 1] == '/') {
 			if (req.path + "/" == loc.name) {
-				//Logger::debug("Normalizing path: %s => %s", req.path.c_str(), (req.path + "/").c_str());
 				req.path += "/";
 				break;
 			}

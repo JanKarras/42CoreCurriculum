@@ -1,49 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   InitLocations.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:57:33 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:57:33 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../include/webserv.hpp"
 
 bool buildDirTree(const std::string &directoryPath, dir &currentDir) {
-    DIR *dirPtr;
-    struct dirent *entry;
-    struct stat pathStat;
+	DIR *dirPtr;
+	struct dirent *entry;
+	struct stat pathStat;
 
-    currentDir.path = directoryPath;
+	currentDir.path = directoryPath;
 
-    dirPtr = opendir(directoryPath.c_str());
-    if (dirPtr == NULL) {
-        std::cerr << "Cannot open directory: " << directoryPath << std::endl;
-        return false;
-    }
+	dirPtr = opendir(directoryPath.c_str());
+	if (dirPtr == NULL) {
+		std::cerr << "Cannot open directory: " << directoryPath << std::endl;
+		return false;
+	}
 
-    while ((entry = readdir(dirPtr)) != NULL) {
-        std::string name = entry->d_name;
+	while ((entry = readdir(dirPtr)) != NULL) {
+		std::string name = entry->d_name;
 
-        if (name == "." || name == "..")
-            continue;
+		if (name == "." || name == "..")
+			continue;
 
-        std::string fullPath = directoryPath;
-        if (fullPath.length() == 0 || fullPath[fullPath.length() - 1] != '/')
-            fullPath += "/";
-        fullPath += name;
+		std::string fullPath = directoryPath;
+		if (fullPath.length() == 0 || fullPath[fullPath.length() - 1] != '/')
+			fullPath += "/";
+		fullPath += name;
 
-        if (stat(fullPath.c_str(), &pathStat) == -1) {
-            std::cerr << "Cannot access path: " << fullPath << std::endl;
-            continue;
-        }
+		if (stat(fullPath.c_str(), &pathStat) == -1) {
+			std::cerr << "Cannot access path: " << fullPath << std::endl;
+			continue;
+		}
 
-        if (S_ISDIR(pathStat.st_mode)) {
-            dir subDir;
-            if (buildDirTree(fullPath, subDir)) {
-                currentDir.dirs.push_back(subDir);
-            }
-        } else if (S_ISREG(pathStat.st_mode)) {
-            file f;
-            f.path = fullPath;
-            f.contentType = getContentType(getFileExtension(fullPath));
-            currentDir.files.push_back(f);
-        }
-    }
+		if (S_ISDIR(pathStat.st_mode)) {
+			dir subDir;
+			if (buildDirTree(fullPath, subDir)) {
+				currentDir.dirs.push_back(subDir);
+			}
+		} else if (S_ISREG(pathStat.st_mode)) {
+			file f;
+			f.path = fullPath;
+			f.contentType = getContentType(getFileExtension(fullPath));
+			currentDir.files.push_back(f);
+		}
+	}
 
-    closedir(dirPtr);
-    return true;
+	closedir(dirPtr);
+	return true;
 }
 
 

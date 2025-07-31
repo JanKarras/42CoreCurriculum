@@ -6,7 +6,7 @@
 /*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:17:59 by jkarras           #+#    #+#             */
-/*   Updated: 2024/11/04 13:53:58 by jkarras          ###   ########.fr       */
+/*   Updated: 2025/07/31 13:44:05 by jkarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,3 @@ int	main(int argc, char **argv)
 	mlx_hooks(&data);
 	mlx_loop(data.mlx);
 }
-
-	// mlx_hook(game.window.win, X_EVENT_KEY_PRESS, 0, &key_press, &game);
-	// mlx_hook(game.window.win, X_EVENT_KEY_RELEASE, 0, &key_release, &game);
-	// mlx_hook(game.window.win, X_EVENT_EXIT, 0, &exit_hook, &game);
-	// mlx_loop_hook(game.window.ptr, &main_loop, &game);
-	// mlx_loop(game.window.ptr);

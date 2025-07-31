@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   post.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 13:57:13 by jkarras           #+#    #+#             */
+/*   Updated: 2025/07/31 13:57:13 by jkarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/webserv.hpp"
 
 bool isPathSafe(const std::string &fileName) {
@@ -8,15 +20,12 @@ bool isPathSafe(const std::string &fileName) {
 }
 
 bool isCGIFile(const std::string &fileName, const std::vector<std::string> &cgi_ext) {
-	//Logger::debug("is File: %s is an exectuabale?", fileName.c_str());
 	size_t dotPos = fileName.rfind('.');
 	if (dotPos == std::string::npos) {
 		return false;
 	}
 	std::string fileExt = fileName.substr(dotPos);
-	//Logger::debug("dot detected fileExt: %s -- cgi_ext.size = %i", fileExt.c_str(), cgi_ext.size());
 	for (size_t i = 0; i < cgi_ext.size(); ++i) {
-		//Logger::debug("cgi_ext: %s", cgi_ext[i].c_str());
 		if (fileExt == cgi_ext[i]) {
 			return true;
 		}
@@ -123,20 +132,17 @@ bool parseFormData(HttpRequest &req, HttpResponse &res, formData &formData) {
 }
 
 bool insertFileIntoDirTree(dir &root, const file &newFile) {
-	//Logger::debug("Insert file: %s into dir: %s", newFile.path.c_str(), root.path.c_str());
 
 	std::string normalizedRoot = root.path;
 	if (!normalizedRoot.empty() && normalizedRoot[normalizedRoot.size() - 1] == '/')
 		normalizedRoot = normalizedRoot.substr(0, normalizedRoot.size() - 1);
 
 	if (newFile.path == normalizedRoot || newFile.path.find(normalizedRoot + "/") != 0) {
-		//Logger::debug("❌ File path doesn't belong to this root: %s", root.path.c_str());
 		return false;
 	}
 
 	size_t pos = newFile.path.find('/', normalizedRoot.size() + 1);
 	if (pos == std::string::npos) {
-		//Logger::debug("📄 File is directly inside this directory: %s", root.path.c_str());
 		root.files.push_back(newFile);
 		return true;
 	}
@@ -144,15 +150,11 @@ bool insertFileIntoDirTree(dir &root, const file &newFile) {
 	std::string nextDirName = newFile.path.substr(normalizedRoot.size() + 1, pos - normalizedRoot.size() - 1);
 	std::string subPath = normalizedRoot + "/" + nextDirName;
 
-	//Logger::debug("➡️ Searching for subdir: %s", subPath.c_str());
-
 	for (size_t i = 0; i < root.dirs.size(); ++i) {
 		if (root.dirs[i].path == subPath) {
-			//Logger::debug("📁 Subdir exists, recursing into: %s", subPath.c_str());
 			return insertFileIntoDirTree(root.dirs[i], newFile);
 		}
 	}
-	//Logger::debug("📁 Subdir doesn't exist, creating new: %s", subPath.c_str());
 	dir newSubDir;
 	newSubDir.path = subPath;
 	root.dirs.push_back(newSubDir);
@@ -165,8 +167,6 @@ bool insertFileIntoDirTree(dir &root, const file &newFile) {
 
 void handleRegularLocation(HttpRequest &req, HttpResponse &res, server &server, location &loc, int clientFd) {
 	std::string path = loc.root + "/" + loc.index;
-
-	//Logger::debug("%s", path.c_str());
 
 	SearchResult result;
 	if (findInDirTree(loc.tree, path, result) && !result.isDir) {
@@ -232,7 +232,6 @@ void routeRequestPOST(HttpRequest &req, HttpResponse &res, server &server, locat
 		newFile.contentType = getContentType(getFileExtension(filePath));
 
 		if (isCGIFile(fileName, loc.cgi_ext)) {
-			//Logger::info("Making CGI script executable: %s", filePath.c_str());
 
 			if (!setsetExecutable(filePath)) {
 				Logger::error("Failed to set file as executable: %s", filePath.c_str());
@@ -248,7 +247,6 @@ void routeRequestPOST(HttpRequest &req, HttpResponse &res, server &server, locat
 			return;
 		}
 
-		//Logger::info("File uploaded successfully: %s", filePath.c_str());
 		res.statusCode = 201;
 		res.statusMessage = "Created";
 		res.body = "File uploaded successfully.";

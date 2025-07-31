@@ -6,7 +6,7 @@
 /*   By: jkarras <jkarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:48:38 by jkarras           #+#    #+#             */
-/*   Updated: 2024/04/17 14:14:45 by jkarras          ###   ########.fr       */
+/*   Updated: 2025/07/31 13:48:30 by jkarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,3 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
-//0 reading pipe
-//1 writing pipe
-//valgrind --leak-check=full --trace-children=yes
-//./piepx infile cat "wc -l" outfile

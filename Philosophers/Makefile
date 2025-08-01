@@ -12,7 +12,7 @@
 
 NAME = philo
 
-SRCDIR = SCR
+SRCDIR = src
 OBJDIR = OBJ
 
 SRCS = main.c \
@@ -35,7 +35,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-# Compile source files to OBJ/*.o
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
